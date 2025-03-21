@@ -1,0 +1,41 @@
+<!-- EJS Template for CIS 371 Semester Project, Anderson Yeakey -->
+<!-- Home / Navigation Page -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Buildings of GVSU</title>
+
+        <link rel="stylesheet" href="gvsu-building-general.css">
+        <script></script><!--Refresh Function JS File-->
+    </head>
+
+    <body>
+        <div class="pageContainer">
+            <header>The Buildings of Grand Valley State University</header>
+
+            <form action="" class="mapForm">
+                <select name="mapSelection" id="">
+                    <option value="Allendale"><button onclick="refresh()">Allendale</button></option>
+                    <option value="Pew"><button onclick="refresh()">Pew</button></option>
+                    <option value="Health"><button onclick="refresh()">Health</button></option>
+                </select>
+            </form>
+
+            <img src="public/Allendale.png" alt="Map of GVSU Allendale Campus" usemap="#navMap">
+            <map name="navMap">
+                <!--<area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
+                <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
+                <area shape="circle" coords="337,300,44" alt="Coffee" href="coffee.htm">-->
+            </map>
+
+            <div class="pageLinkContainer">
+                <% buildings.forEach((building) => { %>
+                    <div class="pageLink"><a href="<%= building.name %>"><%= building.name %></a></div>
+                <% }) %>
+            </div>
+        </div>
+    </body>
+</html>
