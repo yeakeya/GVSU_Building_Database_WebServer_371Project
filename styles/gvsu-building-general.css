@@ -1,0 +1,86 @@
+html {
+    margin: 0;
+    border: 0;
+    padding: 1%;
+
+    height: 100%;
+
+    background-color: white;
+}
+
+a {
+    margin: 0 2%;
+
+    position: relative;
+    display: block;
+}
+
+img {
+    width: 100%;
+}
+
+a p {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+
+.pageContainer {
+    margin: 1%;
+    border: 0;
+    padding: 1%;
+
+    min-height: 100%;
+
+    display: block;
+    background-color: lightgrey;
+}
+
+.headerContainer {
+    margin: 0 0 1%;
+    border: 0;
+    padding: 1%;
+
+    background-color: #0032A0;
+    color: white;
+    font-family: sans-serif;
+    font-size: 200%;
+    font-size: 2.9vw;
+}
+
+.campusContainer {
+    margin: 1%;
+    border: 0;
+    padding: 0;
+
+    float: left;
+    width: 78%;
+
+    background-color: transparent;
+}
+
+.pageLinkContainer {
+    margin: 0 0 0 1%;
+    border: 0;
+    padding: 0;
+
+    float: left;
+    width: 19%;
+
+    background-color: grey;
+}
+
+.loginContainer {
+    margin: auto;
+    border: 0.5vw solid black;
+    border-style: outset;
+    padding: 3%;
+
+    width: 40%;
+
+    text-align: center;
+}
+
+.loginContainer img {
+    width: 5%
+}

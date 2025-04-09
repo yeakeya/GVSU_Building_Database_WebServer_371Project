@@ -1,0 +1,27 @@
+<!-- EJS Template for CIS 371 Semester Project, Anderson Yeakey -->
+<!-- Login Page -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+
+        <link rel="stylesheet" href="gvsu-building-general.css">
+        <link type="image/gif" href="loading.gif"/>
+        <script type="text/javascript" src="login-feedback.js"></script>
+    </head>
+
+    <body>
+        <title>GVSU Buildings Project Login</title>
+        
+        <div class="loginContainer">
+            <p>Please input your existing (or new) login information:</p>
+            Username: <input type="text" id="username" /><br>
+            Password: <input type="text" id="password" /><br>
+            <button onclick="loginCheck()">Submit</button>
+            <p id="loginFeedback"></p>
+        </div>
+    </body>
+</html>

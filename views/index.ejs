@@ -12,30 +12,32 @@
         <script></script><!--Refresh Function JS File-->
     </head>
 
-    <body>
-        <div class="pageContainer">
+    <body class="pageContainer">
+        <div class="headerContainer">
             <header>The Buildings of Grand Valley State University</header>
+        </div>
 
-            <form action="" class="mapForm">
-                <select name="mapSelection" id="">
-                    <option value="Allendale"><button onclick="refresh()">Allendale</button></option>
-                    <option value="Pew"><button onclick="refresh()">Pew</button></option>
-                    <option value="Health"><button onclick="refresh()">Health</button></option>
-                </select>
-            </form>
+        <div class="campusContainer">
+            <a href="https://example.com">
+                <p>Allendale</p>
+                <img src="https://www.gvsu.edu/cms4/asset/0DBA5D42-CF6E-47EE-189D48B651FB2947/header/EE7902ED-D7E2-0BD7-08F2B206A17BFD1E/1280[1616596384].jpg" alt="Photo of GVSU Allendale Campus">
+            </a>
 
-            <img src="public/Allendale.png" alt="Map of GVSU Allendale Campus" usemap="#navMap">
-            <map name="navMap">
-                <!--<area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
-                <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
-                <area shape="circle" coords="337,300,44" alt="Coffee" href="coffee.htm">-->
-            </map>
+            <a href="https://example.com">
+                <p>Pew</p>
+                <img src="https://www.gvsu.edu/cms4/asset/83D77566-0FCE-1482-0E85CB93ACE30B91/header/A38D5D32-BAF1-D707-487E0DDC841DCBCF/1280.jpg" alt="Photo of GVSU Pew Campus">
+            </a>
 
-            <div class="pageLinkContainer">
-                <% buildings.forEach((building) => { %>
-                    <div class="pageLink"><a href="<%= building.name %>"><%= building.name %></a></div>
-                <% }) %>
-            </div>
+            <a href="https://example.com">
+                <p>Health</p>
+                <img src="https://www.gvsu.edu/cms4/asset/EB4AF3AC-0E4D-50C7-8BDD5FEF47228BAE/header/F3BF597D-E6F4-5A12-EF454C9F598AD7A2/1280[1664818711].jpg" alt="Photo of GVSU Allendale Campus">
+            </a>
+        </div>
+
+        <div class="pageLinkContainer">
+            <% buildings.forEach((building) => { %>
+                <div class="pageLink"><a href="<%= building.name %>"><%= building.name %></a></div>
+            <% }) %>
         </div>
     </body>
 </html>
