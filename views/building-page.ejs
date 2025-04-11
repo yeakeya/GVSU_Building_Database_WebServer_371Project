@@ -18,15 +18,18 @@
             </div>
 
             <div class="coverPhotoContainer">
-                
+                <img src="<%= building.name %>.jpg" alt="Photo of <%= building.name %>">
             </div>
 
             <div class="descriptionContainer">
-
+                <p><%= building.description %></p>
             </div>
 
             <div class="infoContainer">
-
+                <p>Year Built: <%= building.yearBuilt %></p>
+                <p>Area (in Square Feet): <%= building.area %></p>
+                <p>Campus: <%= building.campus %></p>
+                <p>Address: <%= building.address %></p>
             </div>
 
             <div class="navBarContainer">

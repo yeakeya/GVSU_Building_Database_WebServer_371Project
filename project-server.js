@@ -43,12 +43,20 @@ app.post("/userLogin", async (req, res) => {
 })
 
 /* Handling GET Requests */
+app.get("/userLogin", (req, res) => {
+    userController.renderLogin(req, res)
+})
+
 app.get("/", isAuthenticated/* TODO: remove after testing, only applies to edit pages */, (req, res) => {
     buildingController.renderIndex(req, res)
 })
 
-app.get("/userLogin", (req, res) => {
-    userController.renderLogin(req, res)
+app.get("/campus/:name", (req, res) => {
+    buildingController.renderCampus(req, res)
+})
+
+app.get("/:name", (req, res) => {
+    buildingController.renderBuilding(req, res)
 })
 
 /* Launch the server */

@@ -18,26 +18,34 @@
         </div>
 
         <div class="campusContainer">
-            <a href="https://example.com">
-                <p>Allendale</p>
-                <img src="https://www.gvsu.edu/cms4/asset/0DBA5D42-CF6E-47EE-189D48B651FB2947/header/EE7902ED-D7E2-0BD7-08F2B206A17BFD1E/1280[1616596384].jpg" alt="Photo of GVSU Allendale Campus">
-            </a>
+            <div class="imgLinkContainer">
+                <a href="campus/Allendale">
+                    <p> Allendale </p>
+                    <img src="https://www.gvsu.edu/cms4/asset/0DBA5D42-CF6E-47EE-189D48B651FB2947/header/EE7902ED-D7E2-0BD7-08F2B206A17BFD1E/1280[1616596384].jpg" alt="Photo of GVSU Allendale Campus">
+                </a>
+            </div>
 
-            <a href="https://example.com">
-                <p>Pew</p>
-                <img src="https://www.gvsu.edu/cms4/asset/83D77566-0FCE-1482-0E85CB93ACE30B91/header/A38D5D32-BAF1-D707-487E0DDC841DCBCF/1280.jpg" alt="Photo of GVSU Pew Campus">
-            </a>
+            <div class="imgLinkContainer">
+                <a href="campus/Pew">
+                    <p> Pew </p>
+                    <img src="https://www.gvsu.edu/cms4/asset/83D77566-0FCE-1482-0E85CB93ACE30B91/header/A38D5D32-BAF1-D707-487E0DDC841DCBCF/1280.jpg" alt="Photo of GVSU Pew Campus">
+                </a>
+            </div>
 
-            <a href="https://example.com">
-                <p>Health</p>
-                <img src="https://www.gvsu.edu/cms4/asset/EB4AF3AC-0E4D-50C7-8BDD5FEF47228BAE/header/F3BF597D-E6F4-5A12-EF454C9F598AD7A2/1280[1664818711].jpg" alt="Photo of GVSU Allendale Campus">
-            </a>
+            <div class="imgLinkContainer">
+                <a href="campus/Health">
+                    <p> Health </p>
+                    <img src="https://www.gvsu.edu/cms4/asset/EB4AF3AC-0E4D-50C7-8BDD5FEF47228BAE/header/F3BF597D-E6F4-5A12-EF454C9F598AD7A2/1280[1664818711].jpg" alt="Photo of GVSU Allendale Campus">
+                </a>
+            </div>
         </div>
 
         <div class="pageLinkContainer">
-            <% buildings.forEach((building) => { %>
-                <div class="pageLink"><a href="<%= building.name %>"><%= building.name %></a></div>
-            <% }) %>
+            <ol>
+                <% buildings.forEach((building) => { %>
+                    <li><a href="<%= building.name %>"><%= building.name %></a></li>
+                <% }) %>
+            </ol>
         </div>
     </body>
 </html>
