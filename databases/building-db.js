@@ -8,10 +8,10 @@ async function allBuildings() {
 async function buildingFilter(attribute, value) {
     let findValue = value
     if (typeof findValue === "string") {
-        findValue = "\"" + findValue + "\""
+        findValue = "\'" + findValue + "\'"
     }
 
-    const result = await db.query("SELECT * FROM buildings WHERE (" + attribute + " == " + findValue + ")");
+    const result = await db.query("SELECT * FROM buildings WHERE (" + attribute + " = " + findValue + ")");
     if (attribute == "name") {
         return result.rows[0];
     } else {

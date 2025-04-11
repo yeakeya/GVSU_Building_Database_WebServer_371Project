@@ -4,7 +4,7 @@ const buildingInitializer = require('../databases/building-initialize-db')
 
 class buildingController {
     constructor() {
-        buildingInitializer.createBuildings()
+        //buildingInitializer.createBuildings()
     }
 
     async renderIndex(req, res) {
