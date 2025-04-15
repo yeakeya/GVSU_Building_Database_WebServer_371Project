@@ -1,4 +1,6 @@
-//const userDB = require('../database/user-db')
+const bcrypt = require("bcrypt")
+
+const userDB = require('../database/user-db')
 
 class userController {
     constructor() {
@@ -11,22 +13,36 @@ class userController {
 
     /* Handling Login Requests */
     async login(req, res) {
-        if (req.body.password == "Password"/* database call with username */) {
+        /* Hashes Password w/ 10 Salt Rounds */
+        bcrypt.hash(req.body.password, 10, function (err, hash) {
+            if (err) {
+                console.error(err)
+                return
+            }
+            console.log(hash)
+        });
+
+        let user = await userDB.findUser(username)
+        if (user.username) {
+            if (user.password == hash) {
+                return new Promise((resolve, reject) => {
+                    req.session.regenerate((err) => {
+                        if (err) next(err)
+                        req.session.user = req.body.username
+                        resolve("Login successful!")
+                    })
+                })
+            } else {
+                return "Incorrect password, try again."
+            }
+        } else {
+            await userDB.addUser(username, password)
             return new Promise((resolve, reject) => {
                 req.session.regenerate((err) => {
                     if (err) next(err)
-                    req.session.user = req.body.username;
-                    resolve("Login successful!");
-                });
-            });
-        } else if (true/* DB call: username is in database */) {
-            return "Incorrect password, try again."
-        } else {
-            /* Store username and password in DB */
-            req.session.regenerate((err) => {
-                if (err) next(err)
-                req.session.user = req.body.username
-                //res.redirect(req.session.returnTo ?? '/')
+                    req.session.user = req.body.username
+                    resolve("Login successful!")
+                })
             })
         }
     }

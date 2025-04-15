@@ -1,10 +1,10 @@
 const Building = require("../models/Building")
 const buildingDB = require('../databases/building-db')
-const buildingInitializer = require('../databases/building-initialize-db')
+const dbInitializer = require('../databases/initialize-db')
 
 class buildingController {
     constructor() {
-        //buildingInitializer.createBuildings()
+        //dbInitializer.createBuildings()
     }
 
     async renderIndex(req, res) {
