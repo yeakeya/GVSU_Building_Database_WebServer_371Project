@@ -42,6 +42,10 @@ app.post("/userLogin", async (req, res) => {
     res.json(loginResponse)
 })
 
+app.post("/userLogout", async (req, res) => {
+    await userController.logout(req, res)
+})
+
 /* Handling GET Requests */
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 

@@ -15,6 +15,13 @@
         <div class="pageContainer">
             <div class="headerContainer">
                 <header><%= building.name %></header>
+                <div class="dropdown">
+                    <img id="usr" src="user.png" alt="User Profile">
+                    <div id="dropdownContent" class="hide">
+                        <p><%= username %></p>
+                        <button type="button" onclick="logout()">Log Out</button>
+                    </div>
+                </div>
             </div>
 
             <div class="coverPhotoContainer">
@@ -36,5 +43,7 @@
 
             </div>
         </div>
+
+        <script type="text/javascript" src="logout.js"></script>
     </body>
 </html>

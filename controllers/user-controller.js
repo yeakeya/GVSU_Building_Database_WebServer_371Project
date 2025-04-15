@@ -14,7 +14,7 @@ class userController {
     /* Handling Login Requests */
     async login(req, res) {
         /* Hashes Password w/ 10 Salt Rounds */
-	let hash = ""
+	    let hash = ""
         bcrypt.hash(req.body.password, 10, function (err, hashFunc) {
             if (err) {
                 console.error(err)
