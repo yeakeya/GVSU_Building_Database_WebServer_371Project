@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt")
 
-const userDB = require('../database/user-db')
+const userDB = require('../databases/user-db')
 
 class userController {
     constructor() {
