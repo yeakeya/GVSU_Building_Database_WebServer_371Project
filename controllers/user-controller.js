@@ -14,16 +14,17 @@ class userController {
     /* Handling Login Requests */
     async login(req, res) {
         /* Hashes Password w/ 10 Salt Rounds */
-        bcrypt.hash(req.body.password, 10, function (err, hash) {
+	let hash = ""
+        bcrypt.hash(req.body.password, 10, function (err, hashFunc) {
             if (err) {
                 console.error(err)
                 return
             }
-            console.log(hash)
+	    hash = hashFunc
         });
 
-        let user = await userDB.findUser(username)
-        if (user.username) {
+        let user = await userDB.findUser(req.body.username)
+        if (typeof user !== 'undefined') {
             if (user.password == hash) {
                 return new Promise((resolve, reject) => {
                     req.session.regenerate((err) => {
@@ -36,7 +37,7 @@ class userController {
                 return "Incorrect password, try again."
             }
         } else {
-            await userDB.addUser(username, password)
+            await userDB.addUser(req.body.username, hash)
             return new Promise((resolve, reject) => {
                 req.session.regenerate((err) => {
                     if (err) next(err)

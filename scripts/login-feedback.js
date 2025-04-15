@@ -14,7 +14,7 @@ async function loginCheck() {
     .then(json => {
         feedback.innerHTML = json
         if (json == "Login successful!") {
-            window.location.replace("http://35.184.131.82:5838/")
+            window.location.replace("http://35.184.131.82:5838")
         }
     })
 }

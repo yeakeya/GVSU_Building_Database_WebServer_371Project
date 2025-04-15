@@ -43,6 +43,8 @@ app.post("/userLogin", async (req, res) => {
 })
 
 /* Handling GET Requests */
+app.get("/favicon.ico", (req, res) => res.status(204).end());
+
 app.get("/userLogin", (req, res) => {
     userController.renderLogin(req, res)
 })
