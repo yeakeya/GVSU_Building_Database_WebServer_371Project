@@ -72,8 +72,21 @@ class buildingController {
 
     async saveEdit(req, res) {
         let submission = new Building(req.body)
-        if (submission.isValid()) {//TODO check why isn't passing
-            await editDB.addEdit(req.session.user, [], req.body)
+	if (submission.yearBuilt == "") {
+	    submission.yearBuilt = 0
+	} else {
+            submission.yearBuilt = Number(submission.yearBuilt)
+	}
+	if (submission.area == "") {
+	    submission.area = 0
+	} else {
+	    submission.area = Number(submission.area)
+	}
+        if (submission.isValid()) {
+	    if ((await editDB.findEdits(req.session.user)).length > 0) {
+		await editDB.removeEdit(req.session.user)
+	    }
+            await editDB.addEdit(req.session.user, "{}", req.body)
         }
         res.redirect("/edits/view")
     }

@@ -1,9 +1,7 @@
 const db = require("./index-db");
-const Building = require("../models/Building")
 
 async function addEdit(username, likes, building) {
-    console.log(username + " " + likes + " " + building)
-    await db.query("INSERT INTO edits (username, likes, name, abbreviation, description, address, yearBuilt, area, campus) VALUES ('" + username + "', " + likes + ", '" + building.name + "', '" + building.description + "', '" + building.abbreviation + "', '" + building.address + "', " + building.yearBuilt + ", " + building.area + ", '" + building.campus + "')")
+    await db.query("INSERT INTO edits (username, likes, name, abbreviation, description, address, yearBuilt, area, campus) VALUES ('" + username + "', '" + likes + "', '" + building.name + "', '" + building.abbreviation + "', '" + building.description + "', '" + building.address + "', " + Number(building.yearBuilt) + ", " + building.area + ", '" + building.campus + "')")
 }
 
 async function findEdits(username) {
@@ -11,7 +9,12 @@ async function findEdits(username) {
     return result.rows;
 }
 
+async function removeEdit(username) {
+    await db.query("DELETE FROM edits WHERE (username = '" + username + "')")
+}
+
 module.exports = {
     addEdit,
-    findEdits
+    findEdits,
+    removeEdit
 }

@@ -102,6 +102,30 @@ header {
     background-color: darkgrey;
 }
 
+#like {
+    width: 5%;
+}
+
+.editContainer {
+    text-align: center;
+    padding: 3%;
+}
+
+.editContainer button {
+    width: 75%;
+    margin: auto auto 2%;
+    padding: 2%;
+    display: block;
+    float: left;
+}
+
+.editContainer img {
+    width: 5%;
+    display: block;
+    float: left;
+    margin: auto 2%
+}
+
 .campusContainer {
     margin: 0 1% 0 0;
     border: 0;

@@ -12,9 +12,10 @@ async function loginCheck() {
     })
     .then(response => response.json())
     .then(json => {
-        feedback.innerHTML = json
         if (json != "Incorrect password, try again.") {
             window.location.replace(json)
-        }
+        } else {
+	    feedback.innerHTML = json
+	}
     })
 }

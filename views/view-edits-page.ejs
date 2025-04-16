@@ -27,7 +27,7 @@
 
         <div class="editContainer">
             <% edits.forEach((edit) => { %>
-                <button><%= username %> - <% edit.name %></button>
+	    <button type="button" onclick="editRedirect('<%= edit.name %>/edit')"><%= username %> - <%= edit.name %></button>
                 <% if (edit.likes.includes(username)) { %>
                     <img src="/public/full-like.png" alt="Clicked Like Button">
                 <% } else { %>
@@ -36,6 +36,7 @@
             <% }) %>
         </div>
 
-        <script type="text/javascript" src="/styles/logout.js"></script>
+	<script type="text/javascript" src="/scripts/edit-interact.js"></script>
+        <script type="text/javascript" src="/scripts/logout.js"></script>
     </body>
 </html>
