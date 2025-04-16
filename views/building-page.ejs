@@ -14,7 +14,7 @@
     <body>
         <div class="pageContainer">
             <div class="headerContainer">
-                <header><%= building.name %></header>
+                <header><%= building.name %> (<%= building.abbreviation %>)</header>
                 <div class="dropdown">
                     <img id="usr" src="user.png" alt="User Profile">
                     <div id="dropdownContent" class="hide">
@@ -40,7 +40,7 @@
             </div>
 
             <div class="navBarContainer">
-
+                <a href="http://35.184.131.82:5838/<%= building.name %>/edit">Edit Building Page</a>
             </div>
         </div>
 

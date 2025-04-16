@@ -46,6 +46,10 @@ app.post("/userLogout", async (req, res) => {
     await userController.logout(req, res)
 })
 
+app.post("/:name/edit", async (req, res) => {
+    await buildingController.saveEdit(req, res)
+})
+
 /* Handling GET Requests */
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
@@ -53,7 +57,7 @@ app.get("/userLogin", (req, res) => {
     userController.renderLogin(req, res)
 })
 
-app.get("/", isAuthenticated/* TODO: remove after testing, only applies to edit pages */, (req, res) => {
+app.get("/", (req, res) => {
     buildingController.renderIndex(req, res)
 })
 
@@ -63,6 +67,10 @@ app.get("/campus/:name", (req, res) => {
 
 app.get("/:name", (req, res) => {
     buildingController.renderBuilding(req, res)
+})
+
+app.get("/:name/edit", isAuthenticated, (req, res) => {
+    buildingController.renderEdit(res, res)
 })
 
 /* Launch the server */
