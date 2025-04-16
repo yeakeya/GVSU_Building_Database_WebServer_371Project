@@ -27,11 +27,11 @@
 
         <div class="editContainer">
             <% edits.forEach((edit) => { %>
-	    <button type="button" onclick="editRedirect('<%= edit.name %>/edit')"><%= username %> - <%= edit.name %></button>
-                <% if (edit.likes.includes(username)) { %>
-                    <img src="/public/full-like.png" alt="Clicked Like Button">
+	        <button type="button" onclick="editRedirect('<%= edit.name %>/edit')"><%= edit.username %> - <%= edit.name %></button>
+                <% if (edit.likes.includes(edit.username)) { %>
+                    <img class="clickedLike" id="<%= edit.username %>" src="/public/full-like.png" alt="Clicked Like Button">
                 <% } else { %>
-                    <img src="/public/empty-like.png" alt="Unclicked Like Button">
+                    <img class="unclickedLike" id="<%= edit.username %>" src="/public/empty-like.png" alt="Unclicked Like Button">
                 <% } %>
             <% }) %>
         </div>

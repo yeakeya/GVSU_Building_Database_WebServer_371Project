@@ -90,6 +90,19 @@ class buildingController {
         }
         res.redirect("/edits/view")
     }
+
+    async handleLike(req, res) {
+        let numLikes = 0
+        if (req.body.likeFunction == "add") {
+            numLikes = await editDB.addLike(req.session.user, req.body.targetUser)
+            if (numLikes >= 10) {
+                let building = await editDB.findEdits(req.body.targetUser)[0]
+                await buildingDB.setBuilding(building)
+                await editDB.removeEdit(req.body.targetUser)
+            }
+        }
+        return(numLikes)
+    }
 }
 
 module.exports = buildingController

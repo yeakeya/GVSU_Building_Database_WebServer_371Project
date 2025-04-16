@@ -9,6 +9,18 @@ async function findEdits(username) {
     return result.rows;
 }
 
+async function addLike(username, targetUser) {
+    let likes = await findEdits(targetUser)[0].likes
+    console.log(likes)
+    likes.push(username)
+    likes = likes.toString()
+    likes = likes.replace("[", "{")
+    likes = likes.replace("]", "}")
+    console.log(likes)
+    await db.query("UPDATE edits SET likes = '" + likes + "' WHERE username = '" + targetUser + "'")
+    return likes.length
+}
+
 async function removeEdit(username) {
     await db.query("DELETE FROM edits WHERE (username = '" + username + "')")
 }
@@ -16,5 +28,6 @@ async function removeEdit(username) {
 module.exports = {
     addEdit,
     findEdits,
+    addLike,
     removeEdit
 }

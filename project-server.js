@@ -51,6 +51,10 @@ app.post("/building/:name/edit", async (req, res) => {
     await buildingController.saveEdit(req, res)
 })
 
+app.post("/edits/view", async (req, res) => {
+    await buildingController.handleLike(req, res)
+})
+
 /* Handling GET Requests */
 app.get("/favicon.ico", (req, res) => res.status(204).end());
 
