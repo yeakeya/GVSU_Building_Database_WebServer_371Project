@@ -22,9 +22,10 @@ app.use(session({
     secret: "beje3n25u24bntlhwjb5jh45jk4wb"
 }))
 app.set("view engine", "ejs")
-app.use(express.static(__dirname + "/public"))
-app.use(express.static(__dirname + "/styles"))
-app.use(express.static(__dirname + "/scripts"))
+//app.use(express.static("public"))
+//app.use(express.static("styles"))
+//app.use(express.static("scripts"))
+app.use(express.static(__dirname))
 
 /* Authentication Function */
 function isAuthenticated(req, res, next) {
@@ -46,7 +47,7 @@ app.post("/userLogout", async (req, res) => {
     await userController.logout(req, res)
 })
 
-app.post("/:name/edit", async (req, res) => {
+app.post("/building/:name/edit", async (req, res) => {
     await buildingController.saveEdit(req, res)
 })
 
@@ -65,12 +66,16 @@ app.get("/campus/:name", (req, res) => {
     buildingController.renderCampus(req, res)
 })
 
-app.get("/:name", (req, res) => {
+app.get("/building/:name", (req, res) => {
     buildingController.renderBuilding(req, res)
 })
 
-app.get("/:name/edit", isAuthenticated, (req, res) => {
-    buildingController.renderEdit(res, res)
+app.get("/building/:name/edit", isAuthenticated, (req, res) => {
+    buildingController.renderEdit(req, res)
+})
+
+app.get("/edits/view", isAuthenticated, (req, res) => {
+    buildingController.renderViewEdits(req, res)
 })
 
 /* Launch the server */

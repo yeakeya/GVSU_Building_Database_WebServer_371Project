@@ -58,12 +58,16 @@ class buildingController {
 	    res.render("edit-page", { building: building, username: username })
     }
 
+    async renderViewEdits(req, res) {
+        res.render("view-edits-page")
+    }
+
     async saveEdit(req, res) {
         let submission = new Building(req.body)
-        if (submission.isValid()) {
-            await editDB.addEdit(req.session.user, [], submission)
+        if (submission.isValid()) {//TODO check why isn't passing
+            await editDB.addEdit(req.session.user, [], req.body)
         }
-        res.render("view-edits-page", { building: building, username: username })
+        res.redirect("/edits/view")
     }
 }
 

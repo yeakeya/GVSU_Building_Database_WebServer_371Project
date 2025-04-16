@@ -8,14 +8,14 @@
         <meta charset="utf-8">
         <title>Buildings of GVSU</title>
 
-        <link rel="stylesheet" href="gvsu-building-general.css">
+        <link rel="stylesheet" href="/styles/gvsu-building-general.css">
     </head>
 
     <body class="pageContainer">
         <div class="headerContainer">
             <header>The Buildings of Grand Valley State University</header>
             <div class="dropdown">
-                <img id="usr" src="user.png" alt="User Profile">
+                <img id="usr" src="/public/user.png" alt="User Profile">
                 <div id="dropdownContent" class="hide">
                     <p><%= username %></p>
                     <button type="button" onclick="logout()">Log Out</button>
@@ -49,11 +49,11 @@
         <div class="pageLinkContainer">
             <ol>
                 <% buildings.forEach((building) => { %>
-                    <li><a href="<%= building.name %>"><%= building.name %></a></li>
+                    <li><a href="building/<%= building.name %>"><%= building.name %></a></li>
                 <% }) %>
             </ol>
         </div>
 
-        <script type="text/javascript" src="logout.js"></script>
+        <script type="text/javascript" src="/scripts/logout.js"></script>
     </body>
 </html>
