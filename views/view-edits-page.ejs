@@ -1,1 +1,41 @@
 <!DOCTYPE html>
+
+<!-- EJS Template for CIS 371 Semester Project, Anderson Yeakey -->
+<!-- View Edits Page -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Your Edits</title>
+
+        <link rel="stylesheet" href="/styles/gvsu-building-general.css">
+    </head>
+
+    <body class="pageContainer">
+        <div class="headerContainer">
+            <header>Your Edits</header>
+            <div class="dropdown">
+                <img id="usr" src="/public/user.png" alt="User Profile">
+                <div id="dropdownContent" class="hide">
+                    <p><%= username %></p>
+                    <button type="button" onclick="logout()">Log Out</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="editContainer">
+            <% edits.forEach((edit) => { %>
+                <button><%= username %> - <% edit.name %></button>
+                <% if (edit.likes.includes(username)) { %>
+                    <img src="/public/full-like.png" alt="Clicked Like Button">
+                <% } else { %>
+                    <img src="/public/empty-like.png" alt="Unclicked Like Button">
+                <% } %>
+            <% }) %>
+        </div>
+
+        <script type="text/javascript" src="/styles/logout.js"></script>
+    </body>
+</html>

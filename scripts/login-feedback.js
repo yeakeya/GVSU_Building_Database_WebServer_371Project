@@ -1,6 +1,6 @@
 async function loginCheck() {
     let feedback = document.getElementById("loginFeedback");
-    feedback.innerHTML = "<img src=\"loading.gif\">";
+    feedback.innerHTML = "<img src=\"/public/loading.gif\">";
 
     loginSubmission = { username: document.getElementById("username").value, password: document.getElementById("password").value }
     console.log(loginSubmission)
@@ -13,8 +13,8 @@ async function loginCheck() {
     .then(response => response.json())
     .then(json => {
         feedback.innerHTML = json
-        if (json == "Login successful!") {
-            window.location.replace("http://35.184.131.82:5838")
+        if (json != "Incorrect password, try again.") {
+            window.location.replace(json)
         }
     })
 }

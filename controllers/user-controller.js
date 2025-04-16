@@ -13,6 +13,7 @@ class userController {
 
     /* Handling Login Requests */
     async login(req, res) {
+        let returnURL = req.session.returnTo
         /* Hashes Password w/ 10 Salt Rounds */
 	    let hash = ""
         bcrypt.hash(req.body.password, 10, function (err, hashFunc) {
@@ -30,7 +31,8 @@ class userController {
                     req.session.regenerate((err) => {
                         if (err) next(err)
                         req.session.user = req.body.username
-                        resolve("Login successful!")
+                        req.session.returnTo = returnURL
+                        resolve(req.session.returnTo)
                     })
                 })
             } else {
@@ -42,7 +44,8 @@ class userController {
                 req.session.regenerate((err) => {
                     if (err) next(err)
                     req.session.user = req.body.username
-                    resolve("Login successful!")
+                    req.session.returnTo = returnURL
+                    resolve(req.session.returnTo)
                 })
             })
         }

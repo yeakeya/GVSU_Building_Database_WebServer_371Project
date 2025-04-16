@@ -6,8 +6,8 @@ const dbInitializer = require('../databases/initialize-db')
 class buildingController {
     constructor() {
         //dbInitializer.createUsers()
-	    //dbInitializer.createBuildings()
-	    //dbInitializer.createEdits()
+        //dbInitializer.createBuildings()
+        //dbInitializer.createEdits()
     }
 
     async renderIndex(req, res) {
@@ -59,7 +59,15 @@ class buildingController {
     }
 
     async renderViewEdits(req, res) {
-        res.render("view-edits-page")
+        let username = ""
+        try {
+            username = req.session.user
+        } catch {
+            username = "guest"
+        }
+        let edits = await editDB.findEdits(req.session.user)
+        //let edits = [{username: "yeakeya", likes: ["yeakeya"], name: "Niemeyer"}]
+        res.render("view-edits-page", { edits: edits, username: username })
     }
 
     async saveEdit(req, res) {

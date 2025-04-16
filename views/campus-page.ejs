@@ -23,6 +23,12 @@
             </div>
         </div>
 
+        <ol>
+            <% buildings.forEach((building) => { %>
+                <li><a href="building/<%= building.name %>"><%= building.name %></a></li>
+            <% }) %>
+        </ol>
+
         <script type="text/javascript" src="/styles/logout.js"></script>
     </body>
 </html>
