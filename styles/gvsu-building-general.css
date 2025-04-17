@@ -51,6 +51,7 @@ a p {
     padding: 1% 1% 0%;
 
     min-height: fit-content;
+    width: 97%;
 
     display: inline-block;
     background-color: lightgrey;
@@ -156,6 +157,22 @@ header {
     width: 20%;
 
     background-color: grey;
+}
+
+.navBarContainer {
+    margin: 1%;
+}
+
+.navBarContainer a {
+    color: blue;
+}
+
+.pageContainer ol li {
+    color: black;
+}
+
+.pageContainer ol li h2 a {
+    color: black;
 }
 
 .loginContainer {
