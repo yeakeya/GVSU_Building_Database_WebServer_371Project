@@ -2,7 +2,8 @@ async function editRedirect(name) {
 	window.location.replace("../../building/" + name)
 }
 
-for (fullLike in Array.from(document.getElementsByClassName("unclickedLike"))) {
+for (let fullLike of document.getElementsByClassName("unclickedLike")) {
+	console.log(fullLike)
 	fullLike.addEventListener("click", () => {
 		fullLike.className = "clickedLike"
 		fetch("http://35.184.131.82:5838/edits/view", {
@@ -11,9 +12,11 @@ for (fullLike in Array.from(document.getElementsByClassName("unclickedLike"))) {
         body: JSON.stringify({ targetUser: fullLike.id })
 		})
 		.then(response => {
-			if (response.json() >= 10) {
-				window.location.replace("/")
+		    if (response.json() >= 10) {
+			for (let element of document.getElementById(fullLike.id)) {
+			    element.remove()
 			}
+		    }
 		})
 	})
 }

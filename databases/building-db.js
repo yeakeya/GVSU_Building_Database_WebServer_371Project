@@ -20,7 +20,10 @@ async function buildingFilter(attribute, value) {
 }
 
 async function setBuilding(building) {
-    await db.query("UPDATE buildings SET (name, abbreviation, description, address, yearBuilt, area, campus) = ('" + building.name + "', '" + building.abbreviation + "', '" + building.description + "', '" + building.address + "', " + building.yearBuilt + ", " + building.area + ", '" + building.campus + "') WHERE name = '" + building.name + "'")
+    if (typeof building.yearBuilt === 'undefined') {
+	building.yearBuilt = 0
+    }
+    await db.query("UPDATE buildings SET (abbreviation, description, address, yearBuilt, area, campus) = ('" + building.abbreviation + "', '" + building.description + "', '" + building.address + "', " + building.yearBuilt + ", " + building.area + ", '" + building.campus + "') WHERE name = '" + building.name + "'")
 }
 
 module.exports = {

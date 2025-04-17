@@ -14,41 +14,27 @@ class userController {
     /* Handling Login Requests */
     async login(req, res) {
         let returnURL = req.session.returnTo
-        /* Hashes Password w/ 10 Salt Rounds */
-	    let hash = ""
-        bcrypt.hash(req.body.password, 10, function (err, hashFunc) {
-            if (err) {
-                console.error(err)
-                return
-            }
-	    hash = hashFunc
-        });
+	let password = req.body.password
 
-        let user = await userDB.findUser(req.body.username)
-        if (typeof user !== 'undefined') {
-            if (user.password == hash) {
-                return new Promise((resolve, reject) => {
-                    req.session.regenerate((err) => {
-                        if (err) next(err)
-                        req.session.user = req.body.username
-                        req.session.returnTo = returnURL
-                        resolve(req.session.returnTo)
-                    })
-                })
-            } else {
-                return "Incorrect password, try again."
-            }
-        } else {
-            await userDB.addUser(req.body.username, hash)
-            return new Promise((resolve, reject) => {
-                req.session.regenerate((err) => {
-                    if (err) next(err)
-                    req.session.user = req.body.username
-                    req.session.returnTo = returnURL
-                    resolve(req.session.returnTo)
-                })
+        /* Hashes Password w/ 10 Salt Rounds */
+	let user = await userDB.findUser(req.body.username)
+	if (typeof user !== 'undefined') {
+	    let compare = await bcrypt.compare(req.body.password, user.password)
+	    if (!compare) {
+		return "Incorrect password, try again."
+	    }
+	} else {
+	    await userDB.addUser(req.body.username, (await bcrypt.hash(password, 10)))
+	}
+
+	return new Promise((resolve, reject) => {
+            req.session.regenerate((err) => {
+                if (err) next(err)
+                req.session.user = req.body.username
+                req.session.returnTo = returnURL
+                resolve(req.session.returnTo)
             })
-        }
+        })    
     }
 
     async logout(req, res) {

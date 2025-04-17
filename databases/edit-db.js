@@ -6,19 +6,22 @@ async function addEdit(username, likes, building) {
 
 async function findEdits(username) {
     const result = await db.query("SELECT * FROM edits WHERE (username = '" + username + "')")
-    return result.rows;
+    return result.rows
+}
+
+async function allEdits() {
+    const result = await db.query("SELECT * FROM edits")
+    return result.rows
 }
 
 async function addLike(username, targetUser) {
-    let likes = await findEdits(targetUser)[0].likes
-    console.log(likes)
-    likes.push(username)
-    likes = likes.toString()
-    likes = likes.replace("[", "{")
-    likes = likes.replace("]", "}")
-    console.log(likes)
-    await db.query("UPDATE edits SET likes = '" + likes + "' WHERE username = '" + targetUser + "'")
-    return likes.length
+    let likeList = (await findEdits(targetUser))[0].likes
+    likeList.push(username)
+    let numLikes = likeList.length
+    likeList = likeList.toString()
+    likeList = "{" + likeList + "}"
+    await db.query("UPDATE edits SET likes = '" + likeList + "' WHERE username = '" + targetUser + "'")
+    return numLikes
 }
 
 async function removeEdit(username) {
@@ -28,6 +31,7 @@ async function removeEdit(username) {
 module.exports = {
     addEdit,
     findEdits,
+    allEdits,
     addLike,
     removeEdit
 }

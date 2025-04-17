@@ -126,6 +126,10 @@ header {
     margin: auto 2%
 }
 
+.clickedLike {
+    content: url('/public/full-like.png');
+}
+
 .campusContainer {
     margin: 0 1% 0 0;
     border: 0;

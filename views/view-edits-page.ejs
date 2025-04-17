@@ -8,14 +8,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Your Edits</title>
+        <title>Edits</title>
 
         <link rel="stylesheet" href="/styles/gvsu-building-general.css">
     </head>
 
     <body class="pageContainer">
         <div class="headerContainer">
-            <header>Your Edits</header>
+            <header>Edits</header>
             <div class="dropdown">
                 <img id="usr" src="/public/user.png" alt="User Profile">
                 <div id="dropdownContent" class="hide">
@@ -27,9 +27,9 @@
 
         <div class="editContainer">
             <% edits.forEach((edit) => { %>
-	        <button type="button" onclick="editRedirect('<%= edit.name %>/edit')"><%= edit.username %> - <%= edit.name %></button>
-                <% if (edit.likes.includes(edit.username)) { %>
-                    <img class="clickedLike" id="<%= edit.username %>" src="/public/full-like.png" alt="Clicked Like Button">
+	    <button id="<%= edit.username %>" type="button" onclick="editRedirect('<%= edit.name %>/edit')"><%= edit.username %> - <%= edit.name %></button>
+                <% if (edit.likes.includes(username)) { %>
+                    <img class="clickedLike" src="/public/full-like.png" alt="Clicked Like Button">
                 <% } else { %>
                     <img class="unclickedLike" id="<%= edit.username %>" src="/public/empty-like.png" alt="Unclicked Like Button">
                 <% } %>
