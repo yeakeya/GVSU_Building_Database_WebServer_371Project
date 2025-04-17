@@ -148,6 +148,10 @@ header {
     border: 4px solid black;
 }
 
+.imgLinkContainer a img {
+    vertical-align: bottom;
+}
+
 .pageLinkContainer {
     margin: 0 0 0 1%;
     border: 0;
@@ -173,6 +177,14 @@ header {
 
 .pageContainer ol li h2 a {
     color: black;
+}
+
+.coverPhotoContainer {
+    text-align: center;
+}
+
+.coverPhotoContainer img {
+    width: 50%;
 }
 
 .loginContainer {

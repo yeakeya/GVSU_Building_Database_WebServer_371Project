@@ -34,27 +34,33 @@
                 <label for="abbreviation">Abbreviation</label>
                 <div></div>
                 <input type="text" name="abbreviation" value="<%= building.abbreviation %>">
+		<p></p>
 
                 <label for="description">Description</label>
                 <div></div>
                 <textarea name="description"><%= building.description %></textarea>
-    
+		<p></p>
+
                 <label for="yearBuilt">Year Built</label>
                 <div></div>
-                <input type="number" name="yearBuilt" min="1960" max="10000" value="<%= building.yearBuilt %>">
-    
+                <input type="number" name="yearbuilt" min="1960" max="10000" value="<%= building.yearbuilt %>">
+		<p></p>
+
                 <label for="area">Area (in Square Feet)</label>
                 <div></div>
                 <input type="number" name="area" min="0" max="10000000" value="<%= building.area %>">
-    
+		<p></p>
+
                 <label for="campus">Campus</label>
                 <div></div>
                 <input type="text" name="campus" value="<%= building.campus %>">
+		<p></p>
 
                 <label for="address">Address</label>
                 <div></div>
                 <input type="text" name="address" value="<%= building.address %>">
-    
+		<p></p>
+
                 <input type="submit" value="Submit Edits"/>
             </form>
 

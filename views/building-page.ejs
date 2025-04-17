@@ -26,8 +26,8 @@
             </div>
 
             <div class="infoContainer">
-                <p>Year Built: <%= building.yearBuilt %></p>
-                <p>Area (in Square Feet): <%= building.area %></p>
+                <p>Year Built: <% if (building.yearbuilt == 0 || typeof building.yearbuilt == 'undefined') { %><%= "--" %><% } else { %><%= building.yearbuilt %><% } %></p>
+                <p>Area (in Square Feet): <% if (building.area == 0 || typeof building.area == 'undefined') { %><%= "--" %><% } else { %><%= building.area %><% } %></p>
                 <p>Campus: <%= building.campus %></p>
                 <p>Address: <%= building.address %></p>
             </div>
