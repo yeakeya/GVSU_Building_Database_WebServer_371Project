@@ -23,7 +23,7 @@ async function setBuilding(building) {
     if (typeof building.yearBuilt === 'undefined') {
 	building.yearBuilt = 0
     }
-    await db.query("UPDATE buildings SET (abbreviation, description, address, yearBuilt, area, campus) = ('" + building.abbreviation + "', '" + building.description + "', '" + building.address + "', " + building.yearBuilt + ", " + building.area + ", '" + building.campus + "') WHERE name = '" + building.name + "'")
+    await db.query("UPDATE buildings SET (abbreviation, description, address, yearbuilt, area, campus) = ('" + building.abbreviation + "', '" + building.description + "', '" + building.address + "', " + building.yearBuilt + ", " + building.area + ", '" + building.campus + "') WHERE name = '" + building.name + "'")
 }
 
 module.exports = {
