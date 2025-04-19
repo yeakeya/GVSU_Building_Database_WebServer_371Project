@@ -5,6 +5,8 @@ async function loginCheck() {
     loginSubmission = { username: document.getElementById("username").value, password: document.getElementById("password").value }
     console.log(loginSubmission)
 
+    // zk Don't hard-code IPs like this.  At minimum, use a const.
+    // Better yet, use environment variables.
     fetch("http://35.184.131.82:5838/userLogin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

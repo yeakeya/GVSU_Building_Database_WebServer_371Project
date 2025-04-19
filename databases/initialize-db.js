@@ -8,6 +8,7 @@ async function createEdits() {
     await db.query("CREATE TABLE IF NOT EXISTS edits (username TEXT PRIMARY KEY, likes TEXT[] NOT NULL, name TEXT NOT NULL, abbreviation TEXT NOT NULL, description TEXT NOT NULL, address TEXT NOT NULL, yearBuilt INTEGER NOT NULL, area INTEGER NOT NULL, campus TEXT NOT NULL)")
 }
 
+// zk I would have written a helper function so that you weren't repeating the "INSERT INTO ... VALUES" part.
 async function createBuildings() {
     await db.query("CREATE TABLE IF NOT EXISTS buildings (name TEXT PRIMARY KEY, abbreviation TEXT NOT NULL, description TEXT NOT NULL, address TEXT NOT NULL, yearBuilt INTEGER NOT NULL, area INTEGER NOT NULL, campus TEXT NOT NULL)")
     await db.query("INSERT INTO buildings (name, abbreviation, description, address, yearBuilt, area, campus) VALUES ('Alumni House and Visitor Center', 'AH', 'The Alumni House and Visitor Center is available for use and rental by the university community of alumni, faculty and staff, students, parents, retirees, Board of Trustees, and departments of GVSU. The Alumni House features a 150-seat dining room, sitting room, bride''s room, conference room, patio, communications center, and four overnight guest rooms. It also serves as an information center for visitors to the Allendale Campus.', '11150 N Campus Dr.', 2000, 12000, 'Allendale')")
